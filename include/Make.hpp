@@ -10,9 +10,17 @@
 #define I18N_GETTEXT_DEFINED
 #endif
 
-#define HC_FILE_EXISTS 0
-#define HC_FILE_NOT_EXISTS 1
-#define FILE_NOT_HC 2
+// All task has been successfully executed
+#define HC_FILE_EXECUTED_SUCCESS 0
+
+// A task or tasks has been a failure
+#define HC_FILE_EXECUTED_FAILURE 1
+
+// The given filename not exist
+#define HC_FILE_NOT_EXISTS 2
+
+// The given filename have not the hc file extension
+#define FILE_NOT_HC 3
 
 using namespace std;
 
@@ -22,19 +30,9 @@ struct CursorGuard {
   ~CursorGuard() { std::cout << "\033[?25h" << std::flush; }
 };
 
-// A very small helper to "build hamon by hamon" using a .hc script.
-// It scans @phase lines and executes the task="..." commands in order.
-// Notes:
-// - Uses HamonParser to pre-parse the file so that variable expansion ${VAR}
-//   defined via @let works before executing tasks.
-// - Job/topology directives are not orchestrated here yet; this is a local
-// runner.
-// - Designed to be easily extended to support language extensions later.
 class Make {
 public:
-  // Parse the given .hc file and execute its task commands sequentially.
-  // Returns true on success (all commands returned exit code 0), false
-  // otherwise.
+  // Execute all task from hamon cube file
   static int build_from_hc(const std::string &hc_path);
 };
 } // namespace dualys

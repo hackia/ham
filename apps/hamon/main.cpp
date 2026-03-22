@@ -6,11 +6,6 @@
 
 #define VERSION "0.0.0"
 
-#ifndef I18N_GETTEXT_DEFINED
-#define _(String) gettext(String)
-#define I18N_GETTEXT_DEFINED
-#endif
-
 using namespace dualys;
 
 static int version() {
@@ -38,10 +33,6 @@ int main(const int argc, char **argv) {
   }
   if (r.count("run")) {
     std::string hc = r["run"].as<std::string>();
-    if (hc.rfind(".hc") == std::string::npos) {
-      std::cerr << _("hamon support only hc file") << std::endl;
-      return FILE_NOT_HC;
-    }
     return Make::build_from_hc(hc);
   }
   return 0;
