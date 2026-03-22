@@ -15,8 +15,8 @@ static int version() {
 int main(const int argc, char **argv) {
 
   cxxopts::Options options("hamon", "A distributed computing framework");
-  options.add_options()("s,shell", "run hamon shell")(
-      "r,run", "Execute task in  the hc file", cxxopts::value<std::string>())(
+  options.add_options()("s,shell", "Run hamon shell")(
+      "r,run", "Execute task in the hc file", cxxopts::value<std::string>())(
       "h,help", "Print usage")("v,version", "Print version");
 
   auto r = options.parse(argc, argv);

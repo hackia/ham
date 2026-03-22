@@ -13,6 +13,12 @@
 // All task has been successfully executed
 #define HC_FILE_EXECUTED_SUCCESS 0
 
+// a verb has been executed successfully in shell
+#define SHELL_VERB_EXECUTED_SUCCESS 0
+
+// a verb has been executed failed in shell
+#define SHELL_VERB_EXECUTED_FAILURE 1
+
 // A task or tasks has been a failure
 #define HC_FILE_EXECUTED_FAILURE 1
 
