@@ -4,6 +4,6 @@
 
 ## Installation
 
-ˋˋˋsh
+```bash
 git clone https://github.com/hackia/hamon.git && cd hamon && cmake . && make && sudo make install
-ˋˋˋ
+```
