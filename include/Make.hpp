@@ -12,6 +12,7 @@
 
 #define HC_FILE_EXISTS 0
 #define HC_FILE_NOT_EXISTS 1
+#define FILE_NOT_HC 2
 
 using namespace std;
 

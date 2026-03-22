@@ -19,5 +19,4 @@ _tests
 *.o
 build
 hamon_tests
-hamon/
 .cache/
