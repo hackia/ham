@@ -15,6 +15,7 @@ set(GCC_WARNING_FLAGS
 add_library(cube STATIC
         src/Shell.cpp
         src/Make.cpp
+        src/Command.cpp
 )
 target_link_libraries(cube PUBLIC Intl::Intl Threads::Threads)
 target_compile_options(cube PRIVATE ${GCC_WARNING_FLAGS})
@@ -24,5 +25,5 @@ target_link_libraries(hamon PRIVATE cube)
 target_compile_options(hamon PRIVATE ${GCC_WARNING_FLAGS})
 
 install(TARGETS hamon DESTINATION bin)
-install(FILES include/Shell.hpp DESTINATION include)
+install(FILES include/Shell.hpp include/Make.hpp include/Command.hpp DESTINATION include)
 install(TARGETS cube DESTINATION lib)

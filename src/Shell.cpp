@@ -1,4 +1,5 @@
 #include "../include/Shell.hpp"
+#include "../include/Command.hpp"
 #include "../include/Make.hpp"
 #include <iostream>
 #include <ostream>
@@ -54,11 +55,13 @@ int Shell::run() {
   std::string verb;
   do {
     verb = ask(prompt());
-    if (!verb_valid(verb)) {
-      std::cerr << _("verb not valid type help for help") << std::endl;
-      continue;
+    if (!verb_valid(verb) && !verb.empty()) {
+      (new Command())->set_command(verb)->run();
     } else if (execute_verb(verb) != SHELL_VERB_EXECUTED_SUCCESS) {
       std::cerr << _("An error has been found") << std::endl;
+      continue;
+    } else {
+      std::cerr << _("verb not valid type help for help") << std::endl;
       continue;
     }
   } while (verb != VERB_EXIT);
