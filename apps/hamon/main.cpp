@@ -35,5 +35,6 @@ int main(const int argc, char **argv) {
     std::string hc = r["run"].as<std::string>();
     return Make::build_from_hc(hc);
   }
+  std::cout << options.help() << std::endl;
   return 0;
 }
