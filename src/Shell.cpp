@@ -26,7 +26,7 @@ static void exit_alternate_screen() {
   std::cout << "\033[?1049l" << std::flush;
 }
 
-static void prompt() { std::cout << "\033[1;32mhamon\033[1;37m>\033[0m "; }
+std::string prompt() { return "\033[1;32mhamon\033[1;37m>\033[0m "; }
 
 Shell::Shell() {}
 
@@ -53,8 +53,7 @@ int Shell::run() {
   enter_alternate_screen();
   std::string verb;
   do {
-    prompt();
-    verb = ask("");
+    verb = ask(prompt());
     if (!verb_valid(verb)) {
       std::cerr << _("verb not valid type help for help") << std::endl;
       continue;
