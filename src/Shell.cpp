@@ -6,6 +6,8 @@
 
 using namespace dualys;
 
+static void clear_screen() { std::cout << "\033[2J\033[H" << std::flush; }
+
 // Enter alternate screen and pos cursor up left
 static void enter_alternate_screen() {
   std::cout << "\033[?1049h\033[2J\033[H" << std::flush;
@@ -37,7 +39,11 @@ std::string Shell::ask(std::string q, std::string def) {
 
 static int execute_verb(std::string &verb) {
   if (verb == VERB_HELP) {
-    std::cout << "run $hc_file" << std::endl;
+    std::cout << "clear         # clear the screen" << std::endl;
+    std::cout << "run $hc_file  # execute the hc commands" << std::endl;
+    return SHELL_VERB_EXECUTED_SUCCESS;
+  } else if (verb == VERB_CLEAR) {
+    clear_screen();
     return SHELL_VERB_EXECUTED_SUCCESS;
   }
   return SHELL_VERB_EXECUTED_FAILURE;

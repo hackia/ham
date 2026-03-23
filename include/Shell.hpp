@@ -10,10 +10,12 @@
 
 // command for exit shell
 const std::string VERB_EXIT = "exit";
+// command for clear screen
+const std::string VERB_CLEAR = "clear";
 // command for display help
 const std::string VERB_HELP = "help";
 // All shell commands
-const std::vector<std::string> VERBS = {VERB_EXIT, VERB_HELP};
+const std::vector<std::string> VERBS = {VERB_EXIT, VERB_HELP, VERB_CLEAR};
 
 namespace dualys {
 class Shell {
